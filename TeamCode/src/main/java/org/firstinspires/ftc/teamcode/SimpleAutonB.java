@@ -34,7 +34,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
 
 
 /**
@@ -52,13 +51,7 @@ import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name="Basic: Linear OpMode", group="Linear Opmode")
 @Disabled
-public class SimpleAuton extends LinearOpMode {
-
-    /*
-    Autonomous Series A
-    This is used for the situation where the crater is located on the left side of the bot.
-    It is assumed that the bot is facing the silver and gold pieces.
-     */
+public class SimpleAutonB extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
@@ -98,25 +91,10 @@ public class SimpleAuton extends LinearOpMode {
             sleep(3000);
             */
 
-            //Move in the leftward direction
-            setMotorPower(0.3, 0.0);
+            //Move in the rightward direction
+            leftDrive.setPower(0.3);
+            rightDrive.setPower(0.0);
             sleep(3000);
-            setMotorPower(0.0, 0.0);
-            sleep(500);
-
-            //Move in the straight direction
-            setMotorPower(0.3, 0.3);
-            sleep(3000);
-            setMotorPower(0.0, 0.0);
-            sleep(500);
-
-            //Move in the rightward and then forward direction
-            setMotorPower(0.0, 0.3);
-            sleep(800);
-            setMotorPower(0.3, 0.3);
-            sleep(4000);
-            setMotorPower(0.0, 0.0);
-
 /*
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -143,11 +121,5 @@ public class SimpleAuton extends LinearOpMode {
             telemetry.update();
             */
         }
-
-    }
-    public void setMotorPower(double right, double left)
-    {
-        rightDrive.setPower(right);
-        leftDrive.setPower(left);
     }
 }
