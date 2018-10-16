@@ -91,10 +91,21 @@ public class SimpleAutonB extends LinearOpMode {
             sleep(3000);
             */
 
-            //Move in the rightward direction
-            leftDrive.setPower(0.3);
-            rightDrive.setPower(0.0);
-            sleep(3000);
+            //Move in the leftward direction
+            setMotorPower(0.3, 0.0);
+            sleep(300);
+            //Move straightward
+            setMotorPower(0.3, 0.3);
+            sleep(4000);
+            //Move in the leftward
+            setMotorPower(0.3, 0.0);
+            sleep(300);
+            //Move in the striaghtward direction
+            setMotorPower(0.3,0.3);
+            sleep(2000);
+
+
+
 /*
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -121,5 +132,10 @@ public class SimpleAutonB extends LinearOpMode {
             telemetry.update();
             */
         }
+    }
+    public void setMotorPower(double right, double left)
+    {
+        rightDrive.setPower(right);
+        leftDrive.setPower(left);
     }
 }
