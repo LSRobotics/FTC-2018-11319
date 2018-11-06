@@ -29,6 +29,7 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -49,14 +50,15 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Basic: Linear OpMode", group="Linear Opmode")
-@Disabled
+@Autonomous(name="SimpleAutonB", group="Autons")
+
 public class SimpleAutonB extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
+
 
     @Override
     public void runOpMode() {
@@ -66,8 +68,8 @@ public class SimpleAutonB extends LinearOpMode {
         // Initialize the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
         // step (using the FTC Robot Controller app on the phone).
-        leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
-        rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
+        leftDrive  = hardwareMap.get(DcMotor.class, "front_left_motor");
+        rightDrive = hardwareMap.get(DcMotor.class, "front_right_motor");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
@@ -92,16 +94,16 @@ public class SimpleAutonB extends LinearOpMode {
             */
 
             //Move in the leftward direction
-            setMotorPower(0.3, 0.0);
+            setMotorPower(-0.3, -0.0);
             sleep(300);
             //Move straightward
-            setMotorPower(0.3, 0.3);
+            setMotorPower(-0.3, -0.3);
             sleep(4000);
             //Move in the leftward
-            setMotorPower(0.3, 0.0);
+            setMotorPower(-0.3, -0.0);
             sleep(300);
             //Move in the striaghtward direction
-            setMotorPower(0.3,0.3);
+            setMotorPower(-0.3,-0.3);
             sleep(2000);
 
 
