@@ -37,6 +37,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
+//Hello everyone, how are you?
+//Somebody once told me the world is gonna roll me i aint the shrpest tol in the shed she was lookin kind of dumb with her finger and her thumb in the shape of an L on her forehead And though the wings are open, so far beyond realty far beyond the wilderness our ques carries on far n
 
 /**
  * This file contains an minimal example of a Linear "OpMode". An OpMode is a 'program' that runs in either
@@ -117,7 +119,7 @@ public class SimpleAuton extends LinearOpMode {
             setMotorPower(-0.3, -0.3);
             sleep(4000);
             setMotorPower(0.0, 0.0);
-
+            stop();
 /*
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -153,4 +155,5 @@ public class SimpleAuton extends LinearOpMode {
         rightDrive.setPower(right);
         leftDrive.setPower(left);
     }
+
 }

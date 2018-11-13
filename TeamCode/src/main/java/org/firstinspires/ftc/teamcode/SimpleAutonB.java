@@ -106,7 +106,7 @@ public class SimpleAutonB extends LinearOpMode {
             setMotorPower(-0.3,-0.3);
             sleep(2000);
 
-
+            stop();
 
 /*
             // Choose to drive using either Tank Mode, or POV Mode
