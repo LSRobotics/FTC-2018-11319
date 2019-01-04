@@ -44,8 +44,7 @@ public class TeleOp extends OpMode
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
     //Rubber band motors!!!!!
-    private DcMotor rubberBandBoiLeft = null;
-    private DcMotor rubberBandBoiRight = null;
+    private DcMotor rubberBandBoi = null;
     //Forebar
     private DcMotor forebar = null;
 
@@ -59,14 +58,13 @@ public class TeleOp extends OpMode
         leftDrive  = hardwareMap.get(DcMotor.class, "front_left_motor");
         rightDrive = hardwareMap.get(DcMotor.class, "front_right_motor");
 
-        rubberBandBoiLeft = hardwareMap.get(DcMotor.class, "rubber_band_left");
-        rubberBandBoiRight = hardwareMap.get(DcMotor.class, "rubber_band_right");
+        rubberBandBoi = hardwareMap.get(DcMotor.class, "rubber_band_mech");
 
         forebar = hardwareMap.get(DcMotor.class, "forebar");
         leftDrive.setDirection(DcMotor.Direction.FORWARD);
         rightDrive.setDirection(DcMotor.Direction.REVERSE);
-        rubberBandBoiRight.setDirection(DcMotor.Direction.REVERSE);
-        rubberBandBoiLeft.setDirection(DcMotor.Direction.FORWARD);
+        rubberBandBoi.setDirection(DcMotor.Direction.FORWARD);
+
 
         telemetry.addData("Status", "Initialized");
     }
@@ -91,8 +89,8 @@ public class TeleOp extends OpMode
         double RBpower;
 
 
-        double drive = gamepad1.left_stick_y;
-        double turn  =  gamepad1.right_stick_x;
+        double drive = -gamepad1.right_stick_x;
+        double turn  =  gamepad1.left_stick_y;
         leftPower    =  Range.clip(drive + turn, -1.0, 1.0) ;
         rightPower   =  -Range.clip(drive - turn, -1.0, 1.0) ;
 
@@ -119,6 +117,7 @@ public class TeleOp extends OpMode
             forebar.setPower(0.0);
         }
 
+        rubberBandBoi.setPower(RBpower);
 
 
 
