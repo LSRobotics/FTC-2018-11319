@@ -34,6 +34,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
@@ -58,6 +59,11 @@ public class SimpleAutonB extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
+    //Rubber band motors!!!!!
+    private DcMotor rubberBandBoi = null;
+    //Forebar
+    private DcMotor forebar = null;
+
 
 
     @Override
@@ -70,6 +76,11 @@ public class SimpleAutonB extends LinearOpMode {
         // step (using the FTC Robot Controller app on the phone).
         leftDrive  = hardwareMap.get(DcMotor.class, "front_left_motor");
         rightDrive = hardwareMap.get(DcMotor.class, "front_right_motor");
+        rubberBandBoi = hardwareMap.get(DcMotor.class, "rubber_band_mech");
+
+        forebar = hardwareMap.get(DcMotor.class, "forebar");
+        forebar.setDirection(DcMotor.Direction.FORWARD);
+        rubberBandBoi.setDirection(DcMotor.Direction.FORWARD);
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
@@ -94,17 +105,25 @@ public class SimpleAutonB extends LinearOpMode {
             */
 
             //Move in the leftward direction
-            setMotorPower(-0.3, -0.0);
-            sleep(300);
+            /*setMotorPower(-0.3, -0.0);
+            sleep(300); */
             //Move straightward
             setMotorPower(-0.3, -0.3);
-            sleep(4000);
+            sleep(3000);
             //Move in the leftward
-            setMotorPower(-0.3, -0.0);
+            /*setMotorPower(0.0, -0.3);
             sleep(300);
             //Move in the striaghtward direction
             setMotorPower(-0.3,-0.3);
             sleep(2000);
+           */ //Move the forebar in the upwards direction
+            /*forebar.setPower(-0.65);
+
+            //Shoot out the cube
+            rubberBandBoi.setPower(0.5);
+            sleep(3000);
+            rubberBandBoi.setPower(0.0);*/
+
 
             stop();
 

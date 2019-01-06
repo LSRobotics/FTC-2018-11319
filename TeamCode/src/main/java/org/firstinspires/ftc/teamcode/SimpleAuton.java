@@ -34,6 +34,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.teamcode.universalbois.mechanisms;
@@ -68,7 +69,12 @@ public class SimpleAuton extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
-    
+    //Rubber band motors!!!!!
+    private DcMotor rubberBandBoi = null;
+    //Forebar
+    private DcMotor forebar = null;
+
+
 
     @Override
     public void runOpMode() {
@@ -80,6 +86,10 @@ public class SimpleAuton extends LinearOpMode {
         // step (using the FTC Robot Controller app on the phone).
         leftDrive  = hardwareMap.get(DcMotor.class, "front_left_motor");
         rightDrive = hardwareMap.get(DcMotor.class, "front_right_motor");
+        rubberBandBoi = hardwareMap.get(DcMotor.class, "rubber_band_mech");
+
+        forebar = hardwareMap.get(DcMotor.class, "forebar");
+        rubberBandBoi.setDirection(DcMotor.Direction.FORWARD);
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
@@ -104,23 +114,45 @@ public class SimpleAuton extends LinearOpMode {
             */
 
             //Move in the leftward direction
-            setMotorPower(-0.3, 0.0);
+           /* setMotorPower(-0.3, 0.0);
             sleep(800);
             setMotorPower(0.0, 0.0);
             sleep(500);
 
-            //Move in the straight direction
+           */ //Move in the straight direction
             setMotorPower(-0.3, -0.3);
-            sleep(3000);
+            sleep(2500);
             setMotorPower(0.0, 0.0);
             sleep(500);
 
-            //Move in the rightward and then forward direction
+            /*//Move in the rightward and then forward direction
             setMotorPower(0.0, -0.5);
             sleep(800);
             setMotorPower(-0.3, -0.3);
             sleep(4000);
-            setMotorPower(0.0, 0.0);
+            setMotorPower(0.0, 0.0);/*
+
+            *///Move the forebar in the upwards direction
+
+            forebar.setPower(-0.5);
+            sleep(1000);
+            rubberBandBoi.setPower(0.5);
+            sleep(2000);
+            forebar.setPower(0.0);
+            rubberBandBoi.setPower(0.0);
+
+            //Shoot out the cube
+
+            sleep(3000);
+
+
+            //after this, make it go into the crater, which is located behind you
+            //move left then floor it straight to crater
+            /*setMotorPower(0.0,-0.3);
+            sleep(800);
+            setMotorPower(0.6,0.6);
+            sleep(4000);*/
+
             stop();
 /*
             // Choose to drive using either Tank Mode, or POV Mode

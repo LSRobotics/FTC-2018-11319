@@ -89,7 +89,7 @@ public class TeleOp extends OpMode
         double RBpower;
 
 
-        double drive = -gamepad1.right_stick_x;
+        double drive = gamepad1.right_stick_x;
         double turn  =  gamepad1.left_stick_y;
         leftPower    =  Range.clip(drive + turn, -1.0, 1.0) ;
         rightPower   =  -Range.clip(drive - turn, -1.0, 1.0) ;
@@ -105,12 +105,12 @@ public class TeleOp extends OpMode
         if(forebarUp)
         {
             forebar.setDirection(DcMotor.Direction.FORWARD);
-            forebar.setPower(0.5);
+            forebar.setPower(0.65);
         }
         else if(forebarDown)
         {
             forebar.setDirection(DcMotor.Direction.REVERSE);
-            forebar.setPower(0.5);
+            forebar.setPower(0.65);
         }
         else
         {
